@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switcherooo - Your All-in-One Cleaning Buddy!</title>
+  <link href="https://fonts.cdnfonts.com/css/sanseriffic" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/lazy-dog" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #f3e8ff;
+      --accent: #dab6ff;
+      --hover: #e3c8ff;
+      --text: #4a2b5d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Sanseriffic', sans-serif;
+      background: var(--main-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--accent);
+      font-family: 'Lazy Dog', cursive;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: var(--text);
+      margin: 0;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--hover);
+    }
+
+    .hero {
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #dab6ff, #f3e8ff);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-text {
+      background: rgba(255,255,255,0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .content {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid var(--accent);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .feature img {
+      max-width: 80px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: var(--accent);
+      text-align: center;
+      padding: 20px;
+      font-size: 1em;
+      margin-top: 40px;
+    }
+
+    button {
+      background: var(--accent);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--hover);
+    }
+
+    form input, form textarea {
+      font-family: inherit;
+      font-size: 1em;
+    }
+
+    @media screen and (max-width: 600px) {
+      .hero-text h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+  <script>
+    const cart = [];
+
+    function addToCart(product) {
+      cart.push(product);
+      alert(product + " added to cart!");
+    }
+
+    function goToCart() {
+      let output = 'Your Cart:\n';
+      if (cart.length === 0) {
+        output += 'Cart is empty.';
+      } else {
+        cart.forEach((item, i) => output += `${i + 1}. ${item}\n`);
+        output += '\nProceed to checkout?';
+      }
+      alert(output);
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email').value;
+      const message = document.querySelector('#message').value;
+
+      const mailtoLink = `mailto:teamswitcheroo@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=From: ${encodeURIComponent(name)} (%20${encodeURIComponent(email)})%0D%0A%0D%0A${encodeURIComponent(message)}`;
+
+      window.location.href = mailtoLink;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1><a href="#" style="color: inherit; text-decoration: none;">Switcherooo!</a></h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="shop.html" onclick="event.preventDefault(); window.location.href='shop.html';">Shop</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="goToCart()">🛒 Cart</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>One Tool, Endless Cleaning Power!</h2>
+      <p>Snap, Switch, Clean! Meet the most fun & functional cleaning buddy out there.</p>
+    </div>
+  </section>
+
+  <section class="content" id="features">
+    <h2 style="text-align:center;">Features</h2>
+    <div class="features">
+      <div class="feature">
+        <img src="https://img.icons8.com/color/96/broom.png" alt="Broom Icon" loading="lazy">
+        <h3>Multi-Head System</h3>
+        <p>Quickly swap between broom, mop, and duster heads.</p>
+      </div>
+      <div class="feature">
+        <img src="https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg" alt="Save Money Icon" loading="lazy">
+        <h3>Save Money</h3>
+        <p>Instead of buying each tool individually, get one Switcherooo with interchangeable parts.</p>
+      </div>
+      <div class="feature">
+        <img src="https://img.freepik.com/premium-vector/eco-friendly-icon_933463-15104.jpg" alt="Eco-Friendly Icon" loading="lazy">
+        <h3>Eco-Friendly</h3>
+        <p>Made with recycled plastic and durable aluminum.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="about">
+    <h2 style="text-align:center;">About the Switcherooo</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      The Switcherooo was designed to make cleaning fun, fast, and effective. With its interchangeable heads and ergonomic design, you'll be breezing through chores in no time. It's perfect for families, kids, and anyone who wants to simplify their home care.
+    </p>
+  </section>
+
+  <section class="content" id="contact">
+    <h2 style="text-align:center;">Contact Us</h2>
+    <form onsubmit="sendEmail(event)" style="max-width: 600px; margin:auto; display:flex; flex-direction:column; gap:15px;">
+      <input type="text" id="name" placeholder="Your Name" required style="padding: 10px; border-radius: 10px; border: 2px solid #ccc;">
+      <input type="email" id="email" placeholder="Your Email" required style="padding: 10px; border-radius: 10px; border: 2px solid #ccc;">
+      <textarea id="message" placeholder="Your Message" required style="padding: 10px; border-radius: 10px; border: 2px solid #ccc;"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Switcherooo Co. | <a href="#contact" style="color:#4a2b5d; text-decoration: underline;">Contact Us</a>
+  </footer>
+</body>
+</html>
